@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PostController::class, 'index']);
+Route::get('/user/{user_id}', [PostController::class, 'IndexByUser']);
+Route::get('/category/{category_id}', [PostController::class, 'IndexByCategory']);
+Route::get('/tag/{tag_id}', [PostController::class, 'IndexByTag']);
+Route::get('/user/{user_id}/category/{category_id}', [PostController::class, 'IndexByUserAndCategory']);
+Route::get('/user/{user_id}/category/{category_id}/tag/{tag_id}', [PostController::class, 'IndexByUserAndCategoryAndTag']);
+Route::get('{post}/show', [PostController::class, 'show']);

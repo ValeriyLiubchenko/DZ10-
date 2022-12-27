@@ -2,17 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tag>
  */
-class CategoryFactory extends Factory
+class TagFactory extends Factory
 {
-
-    protected $model = Category::class;
     /**
      * Define the model's default state.
      *
@@ -21,7 +17,7 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'title' => fake()->unique()->name(),
+            'title' => fake()->unique()->text(),
             'slug' => fake()->text(),
         ];
     }

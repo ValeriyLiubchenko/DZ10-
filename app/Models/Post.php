@@ -9,13 +9,18 @@ class Post extends Model
 {
     use HasFactory;
 
-    private function user()
+    public function user()
     {
         return $this->belongsTo(User::Class);
     }
 
-    private function category()
+    public function category()
     {
         return $this->belongsTo(Category::Class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::Class, 'post_tag')->withTimestamps();
     }
 }
