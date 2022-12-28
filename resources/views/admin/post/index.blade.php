@@ -9,7 +9,7 @@
     @php
         unset($_SESSION['success']);
     @endphp
-
+    <a href="{{route('admin.post.create')}}" class="btn btn-primary">Add Post</a>
     <table class="table">
         <thead>
         <tr>
@@ -42,8 +42,11 @@
                     @endforeach
                 </td>
                 <td>{{ $post->created_at }}</td>
-                <td>{{ $post->updated_at }}</td>
+                <td>{{ $post->updated_at ->diffForHumans()}}</td>
                 <td>
+                    <a href="/admin/post/{{ $post->id }}/edit">Update</a>
+                    <a href="/admin/post/{{ $post->id }}/destroy">Delete</a>
+                    <a href="">Show</a>
                 </td>
             </tr>
         @empty
@@ -51,4 +54,12 @@
         @endforelse
         </tbody>
     </table>
+    <ul>
+        <li>
+            <a href="{{ $posts->nextPageUrl() }}">Next page</a>
+        </li>
+        <li>
+            <a href="{{ $posts->previousPageUrl() }}">Prev page</a>
+        </li>
+    </ul>
 @endsection()
